@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Yelema, l'IA de votre entreprise (maquette v2)</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:'Space Grotesk';font-weight:400;font-display:swap;src:url(fonts/space-grotesk-400.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-weight:500;font-display:swap;src:url(fonts/space-grotesk-500.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-weight:700;font-display:swap;src:url(fonts/space-grotesk-700.woff2) format('woff2')}
+@font-face{font-family:'Funnel Display';font-weight:400;font-display:swap;src:url(fonts/funnel-display-400.woff2) format('woff2')}
+@font-face{font-family:'Funnel Display';font-weight:500;font-display:swap;src:url(fonts/funnel-display-500.woff2) format('woff2')}
+@font-face{font-family:'Funnel Display';font-weight:700;font-display:swap;src:url(fonts/funnel-display-700.woff2) format('woff2')}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--indigo:#301667;--indigo2:#1c0f3d;--violet:#8D68FA;--lav:#C5C4FF;--lavp:#F2F0FF;--bleu:#2E4EC4;
+ --corail:#E4765A;--corailp:#FDF0EC;--ink:#241a3a;--muted:#6b6580;--line:#ece8fa;
+ --grad:linear-gradient(135deg,#2E4EC4,#8D68FA);--t:'Space Grotesk',system-ui,sans-serif;--b:'Funnel Display',system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--b);color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--t);color:var(--indigo);letter-spacing:-.02em;line-height:1.12}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--t);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:700;color:var(--violet);margin-bottom:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--t);font-weight:600;font-size:15px;padding:13px 24px;border-radius:40px;transition:.2s}
+.btn-p{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(141,104,250,.35)}
+.btn-p:hover{transform:translateY(-2px)}
+.btn-l{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.btn-g{background:#fff;color:var(--indigo);border:1.5px solid var(--line)}
+.v2-banner{background:var(--corail);color:#fff;text-align:center;font-family:var(--t);font-size:13px;font-weight:600;padding:7px 16px}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.nav img{height:30px;width:auto}
+.menu{display:flex;gap:4px}
+.menu a{font-family:var(--t);font-weight:500;font-size:14.5px;padding:9px 13px;border-radius:30px}
+.menu a:hover{background:var(--lavp);color:var(--violet)}
+section{padding:88px 0}
+.sh{max-width:720px;margin:0 auto 48px;text-align:center}
+.sh h2{font-size:clamp(28px,4vw,42px);margin-bottom:14px}
+.sh p{color:var(--muted);font-size:18px}
+/* hero */
+.hero{background:radial-gradient(1200px 500px at 85% -10%,rgba(141,104,250,.45),transparent 60%),linear-gradient(160deg,var(--indigo2),var(--indigo));color:#fff;padding:90px 0 100px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{color:#fff;font-size:clamp(36px,5.4vw,60px);margin-bottom:22px}
+.hero h1 span{background:linear-gradient(90deg,#C5C4FF,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-size:19px;color:#ddd8ff;max-width:560px;margin-bottom:32px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.trio{display:grid;gap:12px}
+.trio a{display:flex;gap:16px;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:16px 18px;transition:.2s}
+.trio a:hover{background:rgba(255,255,255,.14)}
+.trio b{font-family:var(--t);font-size:17px;display:block}
+.trio em{font-style:normal;color:#cfc8ff;font-size:14px}
+.trio .n{flex:0 0 42px;height:42px;border-radius:12px;background:rgba(197,196,255,.18);display:grid;place-items:center;font-family:var(--t);font-weight:700;color:var(--lav)}
+/* constat */
+.leak{background:var(--lavp)}
+.leak-g{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.lk{background:#fff;border-radius:24px;padding:32px;border:1px solid var(--line)}
+.lk h3{font-size:22px;margin-bottom:6px}
+.lk .tag{font-family:var(--t);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.lk.bad .tag{color:var(--corail)}.lk.good .tag{color:var(--violet)}
+.flow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:26px 0 22px}
+.node{flex:1;text-align:center;font-family:var(--t);font-size:13.5px;font-weight:600;color:var(--indigo)}
+.node i{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 8px;border-radius:16px;background:var(--lavp);font-style:normal;font-size:24px}
+.lk.bad .node.ext i{background:var(--corailp)}
+.lk.good .node.own i{background:var(--indigo);color:#fff}
+.arr{flex:0 0 26px;height:2px;background:var(--lav);position:relative}
+.arr:after{content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left-color:var(--lav)}
+.lk ul{list-style:none;display:grid;gap:9px}
+.lk li{padding-left:26px;position:relative;font-size:15.5px}
+.lk.bad li:before{content:"";position:absolute;left:2px;top:12px;width:12px;height:2.5px;border-radius:2px;background:var(--corail)}
+.lk.good li:before{content:"✓";position:absolute;left:0;color:var(--violet);font-weight:700}
+.quote-line{margin-top:28px;text-align:center;font-family:var(--t);font-size:19px;color:var(--indigo);font-weight:500}
+/* offres */
+.of-g{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.of{border:1px solid var(--line);border-radius:24px;padding:30px 26px;display:flex;flex-direction:column;background:#fff}
+.of.star{border:2px solid var(--violet);box-shadow:0 18px 40px rgba(141,104,250,.18);position:relative}
+.of.star:before{content:"Pour commencer";position:absolute;top:-13px;left:26px;background:var(--violet);color:#fff;font-family:var(--t);font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
+.of h3{font-size:26px}
+.of .for{color:var(--muted);font-size:15px;margin:4px 0 18px}
+.price{font-family:var(--t);font-weight:700;color:var(--indigo);font-size:30px;line-height:1.1}
+.price small{font-size:15px;font-weight:500;color:var(--muted)}
+.price-n{font-size:14px;color:var(--muted);margin:6px 0 20px}
+.of ul{list-style:none;display:grid;gap:9px;margin-bottom:24px;flex:1}
+.of li{padding-left:24px;position:relative;font-size:15px}
+.of li:before{content:"";position:absolute;left:2px;top:9px;width:9px;height:9px;border-radius:3px;background:var(--violet)}
+.of .btn{justify-content:center}
+.inclus{margin-top:24px;background:var(--indigo);color:#fff;border-radius:24px;padding:28px 32px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+.inclus .badge{font-family:var(--t);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--lav)}
+.inclus h3{color:#fff;font-size:22px;margin:4px 0 6px}
+.inclus p{color:#ddd8ff;font-size:15.5px}
+/* cycles */
+.cy-g{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cy{border:1px solid var(--line);border-radius:20px;padding:24px;background:#fff}
+.cy .faces{display:flex;margin-bottom:14px}
+.cy .faces img{width:46px;height:46px;border-radius:50%;border:3px solid #fff;margin-right:-10px;object-fit:cover;box-shadow:0 2px 8px rgba(48,22,103,.15)}
+.cy h3{font-size:19px;margin-bottom:4px}
+.cy .who{font-family:var(--t);font-size:12.5px;color:var(--violet);font-weight:600;margin-bottom:10px}
+.cy p{font-size:15px;color:var(--ink)}
+.cy .res{margin-top:12px;font-size:14px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.cy .res b{color:var(--indigo)}
+.note-res{text-align:center;margin-top:30px;color:var(--muted)}
+.note-res b{color:var(--indigo)}
+/* démarrage */
+.start{background:var(--lavp)}
+.st-g{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+.st{background:#fff;border-radius:22px;padding:28px;position:relative}
+.st .when{font-family:var(--t);font-weight:700;color:var(--corail);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.st h3{font-size:21px;margin:6px 0 8px}
+.st p{font-size:15.5px}
+/* sécurité */
+.sec-g{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.sec-g h2{font-size:clamp(28px,3.6vw,38px);margin-bottom:16px}
+.sec-q{border-left:4px solid var(--violet);padding:6px 0 6px 18px;font-family:var(--t);font-size:20px;color:var(--indigo);margin:18px 0}
+.lv{display:grid;gap:14px}
+.lv div{border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.lv b{font-family:var(--t);color:var(--indigo);font-size:17px;display:block;margin-bottom:4px}
+.lv span{font-size:14.5px;color:var(--muted)}
+.lv .pill{display:inline-block;font-family:var(--t);font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:20px;background:var(--lavp);color:var(--violet);margin-bottom:8px}
+/* preuve */
+.proof{background:linear-gradient(160deg,var(--indigo2),var(--indigo));color:#fff}
+.pr{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;max-width:900px;margin:0 auto}
+.pr img.p{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,.2)}
+.pr blockquote{font-family:var(--t);font-size:21px;line-height:1.45;margin-bottom:14px}
+.pr cite{font-style:normal;color:var(--lav)}
+.logos{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;align-items:center;margin-top:46px;opacity:.9}
+.logos img{height:42px;width:auto;background:#fff;border-radius:10px;padding:6px 10px}
+/* faq */
+.faq{max-width:820px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:18px 4px}
+.faq summary{cursor:pointer;font-family:var(--t);font-weight:600;font-size:17px;color:var(--indigo);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary:after{content:"+";color:var(--violet);font-size:22px;line-height:1}
+.faq details[open] summary:after{content:"−"}
+.faq p{margin-top:10px;color:var(--ink)}
+.cta{background:var(--grad);color:#fff;text-align:center;border-radius:28px;padding:56px 32px}
+.cta h2{color:#fff;font-size:clamp(28px,4vw,40px);margin-bottom:12px}
+.cta p{color:#ece9ff;font-size:18px;margin-bottom:26px}
+.cta .btn-g{border:0}
+footer{background:var(--indigo2);color:#cfc8ff;padding:48px 0;font-size:14.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer img{height:28px;width:auto}
+@media(max-width:900px){
+ .hero .wrap,.leak-g,.of-g,.cy-g,.st-g,.sec-g{grid-template-columns:1fr}
+ .menu{display:none}
+ .inclus,.pr{grid-template-columns:1fr;text-align:center}
+ .pr img.p{margin:0 auto}
+ section{padding:64px 0}
+}
+@media(max-width:480px){.flow{flex-wrap:wrap}.arr{display:none}.nav .btn{padding:10px 16px;font-size:13.5px}}
+</style>
+</head>
+<body>
+<div class="v2-banner">Maquette v2 pour relecture interne. Rien n'est publié sur yelema.ai.</div>
+<header><div class="wrap nav">
+ <a href="#top"><img src="img/yelema-long.png" alt="Yelema" width="686" height="199"></a>
+ <nav class="menu">
+  <a href="#offres">Offres</a><a href="#metiers">Par métier</a><a href="#demarrer">Démarrer</a><a href="#confidentialite">Confidentialité</a><a href="#faq">Questions</a>
+ </nav>
+ <a class="btn btn-p" href="#contact">Essayer Exécutif</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+ <div>
+  <p class="eyebrow" style="color:#c5b8ff">Votre entreprise, décuplée par l'IA.</p>
+  <h1>L'IA de votre entreprise, <span>opérée pour vous.</span></h1>
+  <p class="sub">Un assistant personnel pour le dirigeant, des équipes d'Experts IA sur les fonctions où vous perdez le plus, et une IA confidentielle pour tous vos salariés. Nous installons, nous opérons, vous voyez les résultats.</p>
+  <div class="hero-cta">
+   <a class="btn btn-p" href="#contact">Essayer l'offre Exécutif</a>
+   <a class="btn btn-l" href="#offres">Voir les trois offres</a>
+  </div>
+ </div>
+ <div class="trio">
+  <a href="#executif"><span class="n">01</span><span><b>Exécutif</b><em>Votre assistant de dirigeant, à la voix.</em></span></a>
+  <a href="#entreprise"><span class="n">02</span><span><b>Entreprise</b><em>Une équipe d'Experts IA par fonction.</em></span></a>
+  <a href="#sur-mesure"><span class="n">03</span><span><b>Sur mesure</b><em>Pour les administrations et les grands comptes.</em></span></a>
+ </div>
+</div></section>
+
+<section class="leak" id="constat"><div class="wrap">
+ <div class="sh"><p class="eyebrow">Le vrai risque</p>
+  <h2>L'IA est déjà dans votre entreprise, par le téléphone de vos salariés</h2>
+  <p>Un contrat collé dans un ChatGPT personnel, un fichier Excel envoyé depuis un compte gratuit : vos données sortent, sans contrat et sans trace.</p></div>
+ <div class="leak-g">
+  <div class="lk bad">
+   <p class="tag">Aujourd'hui</p>
+   <h3>Chacun son compte personnel</h3>
+   <div class="flow">
+    <div class="node"><i>👤</i>Un salarié</div><span class="arr"></span>
+    <div class="node"><i>📄</i>Votre document</div><span class="arr"></span>
+    <div class="node ext"><i>☁️</i>Un compte grand public</div>
+   </div>
+   <ul>
+    <li>Le document est conservé chez un tiers</li>
+    <li>Il peut servir à entraîner le modèle</li>
+    <li>Personne ne sait qui a envoyé quoi</li>
+    <li>Chaque salarié repart de zéro, sans la mémoire de l'entreprise</li>
+   </ul>
+  </div>
+  <div class="lk good">
+   <p class="tag">Avec Yelema</p>
+   <h3>Un espace IA à votre entreprise</h3>
+   <div class="flow">
+    <div class="node"><i>👥</i>Vos équipes</div><span class="arr"></span>
+    <div class="node own"><i>🔒</i>Votre serveur dédié</div><span class="arr"></span>
+    <div class="node"><i>✳️</i>Le modèle d'IA</div>
+   </div>
+   <ul>
+    <li>Vos documents restent sur votre serveur</li>
+    <li>Le modèle ne reçoit que l'extrait utile, et n'en garde rien</li>
+    <li>Vous décidez qui accède à quoi</li>
+    <li>La mémoire de l'entreprise profite à tous</li>
+   </ul>
+  </div>
+ </div>
+ <p class="quote-line">Le document ne quitte pas votre infrastructure. Seule la partie nécessaire est soumise au modèle, qui n'en garde rien.</p>
+</div></section>
+
+<section id="offres"><div class="wrap">
+ <div class="sh"><p class="eyebrow">Trois offres</p>
+  <h2>Commencez par le dirigeant, étendez fonction par fonction</h2>
+  <p>Vous n'achetez ni un logiciel ni un salarié : vous achetez un résultat, que nous installons, opérons et tenons à jour.</p></div>
+ <div class="of-g">
+  <div class="of star" id="executif">
+   <h3>Exécutif</h3><p class="for">Pour le chef d'entreprise</p>
+   <p class="price">300 000 F <small>/ mois</small></p>
+   <p class="price-n">Sans frais d'installation</p>
+   <ul>
+    <li>Vous lui parlez : il vous répond à la voix</li>
+    <li>Votre agenda et vos e-mails, réponses préparées</li>
+    <li>Chaque document reçu analysé, erreurs signalées</li>
+    <li>Vos tableaux de bord, à la demande</li>
+    <li>En option : un enregistreur de réunions de poche</li>
+   </ul>
+   <a class="btn btn-p" href="#contact">Essayer Exécutif</a>
+  </div>
+  <div class="of" id="entreprise">
+   <h3>Entreprise</h3><p class="for">Pour une fonction qui vous coûte</p>
+   <p class="price">1 000 000 F <small>/ mois par fonction</small></p>
+   <p class="price-n">Mise en place sur audit, de 500 000 à 2 000 000 F</p>
+   <ul>
+    <li>Une équipe d'Experts IA sur une fonction complète</li>
+    <li>Marketing, vente, achats et finance, RH, terrain</li>
+    <li>Branchée sur vos outils et vos règles</li>
+    <li>Opérée et améliorée chaque mois par nos équipes</li>
+    <li>En option : Sage, connecteurs métiers, nouvelles fonctions</li>
+   </ul>
+   <a class="btn btn-g" href="#metiers">Voir les fonctions</a>
+  </div>
+  <div class="of" id="sur-mesure">
+   <h3>Sur mesure</h3><p class="for">Pour les administrations et les grands comptes</p>
+   <p class="price">Sur devis</p>
+   <p class="price-n">Après un cadrage avec vos équipes</p>
+   <ul>
+    <li>Plusieurs directions, plusieurs sites</li>
+    <li>Développements IA propres à votre organisation</li>
+    <li>Serveur installé chez vous, modèle open source</li>
+    <li>Pour les ministères, les banques, les régulateurs</li>
+   </ul>
+   <a class="btn btn-g" href="#contact">Nous écrire</a>
+  </div>
+ </div>
+ <div class="inclus">
+  <div><p class="badge">Inclus dans chaque offre</p></div>
+  <div><h3>L'IA d'entreprise, pour tous vos salariés</h3>
+   <p>Un espace de discussion confidentiel sur votre serveur, avec l'historique et la base de connaissances de votre entreprise. Vos équipes posent leurs questions ici, plus sur leur compte personnel.</p></div>
+ </div>
+</div></section>
+
+<section class="start" id="metiers"><div class="wrap">
+ <div class="sh"><p class="eyebrow">Offre Entreprise</p>
+  <h2>On commence là où ça fait mal</h2>
+  <p>Chaque fonction est tenue par une équipe d'Experts IA. Vous choisissez la première, nous la mettons en place, vous mesurez.</p></div>
+ <div class="cy-g">
+  <div class="cy"><div class="faces"><img src="img/av-fatima-sq.jpg" alt="Fatima"><img src="img/av-koffi-sq.jpg" alt="Koffi"></div>
+   <h3>Marketing</h3><p class="who">Fatima et Koffi</p>
+   <p>Campagnes, visuels, publications, suivi de vos agences et de vos réseaux sociaux.</p>
+   <p class="res"><b>Le résultat :</b> vos contenus du mois produits et suivis, à moindre coût d'agence.</p></div>
+  <div class="cy"><div class="faces"><img src="img/av-kouassi-sq.jpg" alt="Kouassi"><img src="img/av-awa-sq.jpg" alt="Awa"></div>
+   <h3>Vente et relation client</h3><p class="who">Kouassi et Awa</p>
+   <p>Prospection, relances, devis, réponses aux clients sur WhatsApp et par e-mail.</p>
+   <p class="res"><b>Le résultat :</b> aucun prospect oublié, aucun client sans réponse.</p></div>
+  <div class="cy"><div class="faces"><img src="img/av-mamadou-sq.jpg" alt="Mamadou"><img src="img/av-salif-sq.jpg" alt="Salif"></div>
+   <h3>Achats et finance</h3><p class="who">Mamadou et Salif</p>
+   <p>Notes de frais prises en photo, factures, rapprochements, relances de paiement.</p>
+   <p class="res"><b>Le résultat :</b> une note de frais envoyée, puis plus rien à gérer.</p></div>
+  <div class="cy"><div class="faces"><img src="img/av-adjoua-sq.jpg" alt="Adjoua"><img src="img/av-fatou-sq.jpg" alt="Fatou"></div>
+   <h3>Recrutement et RH</h3><p class="who">Adjoua et Fatou</p>
+   <p>Fiches de poste, tri des candidatures, entretiens préparés, paie et dossiers du personnel.</p>
+   <p class="res"><b>Le résultat :</b> un recrutement mené en quelques jours.</p></div>
+  <div class="cy"><div class="faces"><img src="img/av-salif-sq.jpg" alt="Salif"><img src="img/av-nadia-sq.jpg" alt="Nadia"></div>
+   <h3>Opérations terrain</h3><p class="who">Salif et Nadia</p>
+   <p>Remontées de vos équipes terrain par WhatsApp ou formulaire, consolidées chaque soir.</p>
+   <p class="res"><b>Le résultat :</b> une vue claire de ce qui s'est fait, chaque jour.</p></div>
+  <div class="cy"><div class="faces"><img src="img/av-chiefofstaff-sq.jpg" alt="Djénéba"></div>
+   <h3>Pilotage</h3><p class="who">Djénéba, avec l'offre Exécutif</p>
+   <p>Elle coordonne les autres Experts, prépare vos comités et vous résume ce qui compte.</p>
+   <p class="res"><b>Le résultat :</b> vos décisions prises sur des chiffres à jour.</p></div>
+ </div>
+ <p class="note-res">Ibrahim (juridique) et Alioune (investissement) rejoignent une équipe <b>sur demande</b>.</p>
+</div></section>
+
+<section id="demarrer"><div class="wrap">
+ <div class="sh"><p class="eyebrow">Démarrer</p>
+  <h2>Installé devant vous, le jour même</h2>
+  <p>Pas de projet de six mois. Le dirigeant l'essaie d'abord sur son propre quotidien.</p></div>
+ <div class="st-g">
+  <div class="st"><p class="when">Jour 1</p><h3>On installe</h3>
+   <p>L'application et Telegram sur votre téléphone, votre e-mail, votre agenda et vos documents branchés. Vous lui parlez avant que nous partions.</p></div>
+  <div class="st"><p class="when">Les 15 premiers jours</p><h3>On vous accompagne</h3>
+   <p>Nous vous appelons, nous ajustons ce qu'il fait, nous ajoutons le contexte de votre entreprise au fil de vos usages.</p></div>
+  <div class="st"><p class="when">Ensuite</p><h3>On choisit la première fonction</h3>
+   <p>Après un audit de vos outils, nous mettons en place l'équipe d'Experts sur la fonction qui vous coûte le plus.</p></div>
+ </div>
+</div></section>
+
+<section class="leak" id="confidentialite"><div class="wrap sec-g">
+ <div>
+  <p class="eyebrow">Confidentialité</p>
+  <h2>Vos données restent chez vous</h2>
+  <p>Chaque entreprise a son propre serveur. Vos documents, votre mémoire et vos accès y vivent, séparés de ceux des autres clients.</p>
+  <p class="sec-q">Le document ne quitte pas votre infrastructure. Le modèle ne voit que l'extrait nécessaire, et n'en garde rien.</p>
+  <p>Aucune donnée ne sert à entraîner un modèle. Vous décidez des droits de chaque salarié, et vous pouvez tout effacer.</p>
+ </div>
+ <div class="lv">
+  <div><span class="pill">Standard</span><b>Un serveur dédié à votre entreprise</b><span>Hébergé pour vous, isolé des autres clients, avec les meilleurs modèles du marché.</span></div>
+  <div><span class="pill">Option souveraine</span><b>Un serveur installé dans vos locaux</b><span>Un modèle open source tourne chez vous : aucune donnée ne sort du bâtiment. Pour les ministères et les banques.</span></div>
+ </div>
+</div></section>
+
+<section class="proof"><div class="wrap">
+ <div class="pr">
+  <img class="p" src="img/florence.jpg" alt="Florence Tahiri Fadika">
+  <div><blockquote>« Avec Adjoua, j'ai recruté mon responsable projet, de la fiche de poste jusqu'au choix final. Le recrutement a pris quelques jours au lieu de plusieurs semaines. »</blockquote>
+   <cite>Florence Tahiri Fadika, Fondation Jeunesse Numérique</cite></div>
+ </div>
+</div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+ <div class="sh"><p class="eyebrow">Questions</p><h2>Ce qu'on nous demande</h2></div>
+ <div class="faq">
+  <details open><summary>Pourquoi commencer par l'offre Exécutif ?</summary><p>Parce que le dirigeant voit tout de suite ce que l'IA change dans sa journée. Il décide ensuite, en connaissance de cause, quelle fonction confier à une équipe d'Experts.</p></details>
+  <details><summary>Que paie-t-on dans l'offre Entreprise ?</summary><p>Une fonction tenue de bout en bout : les Experts, leur réglage sur vos outils, leur suivi et leurs améliorations chaque mois. La mise en place dépend de vos intégrations, nous la chiffrons après l'audit.</p></details>
+  <details><summary>Mes salariés utilisent déjà ChatGPT. Qu'est-ce qui change ?</summary><p>Ils posent leurs questions dans l'espace de votre entreprise, sur votre serveur. Vos documents ne partent plus sur des comptes personnels, et chacun profite de la mémoire commune.</p></details>
+  <details><summary>Faut-il une équipe informatique ?</summary><p>Non. Nous installons, branchons et surveillons. Vous gardez la main sur les droits et les validations.</p></details>
+  <details><summary>Et si nous arrêtons ?</summary><p>Vous récupérez tout dans un format lisible, puis nous effaçons nos copies.</p></details>
+ </div>
+</div></section>
+
+<section id="contact" style="padding-top:0"><div class="wrap">
+ <div class="cta">
+  <h2>Essayez Exécutif cette semaine</h2>
+  <p>Nous venons l'installer avec vous. Vous lui parlez avant notre départ.</p>
+  <a class="btn btn-g" href="mailto:contact@yelema.ai?subject=Essayer%20l%27offre%20Ex%C3%A9cutif">Écrire à contact@yelema.ai</a>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <img src="img/yelema-long-blanc.png" alt="Yelema" width="686" height="199">
+ <span>l'IA pour l'Afrique. Ivoire Trade Center, Abidjan.</span>
+</div></footer>
+</body>
+</html>
